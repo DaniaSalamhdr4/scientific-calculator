@@ -14,6 +14,40 @@ arr.forEach((button) => {
     } else if (e.target.innerHTML == "DEL") {
       string = string.substring(0, string.length - 1);
       input.value = string;
+    } else if (e.target.innerHTML == "sin") {
+      let degrees = parseFloat(string);
+      let radians = degrees * (Math.PI / 180);
+      string = Math.sin(radians).toFixed(10);
+      string = parseFloat(string).toString();
+      input.value = string;
+    } else if (e.target.innerHTML == "cos") {
+      let degrees = parseFloat(string);
+      let radians = degrees * (Math.PI / 180);
+      string = Math.cos(radians).toFixed(10);
+      string = parseFloat(string).toString();
+      input.value = string;
+    } else if (e.target.innerHTML == "tan") {
+      let degrees = parseFloat(string);
+      if (Math.abs(degrees % 180) === 90) {
+        input.value = "Error";
+        string = "";
+      } else {
+        let radians = degrees * (Math.PI / 180);
+        string = parseFloat(Math.tan(radians).toFixed(10)).toString();
+        input.value = string;
+      }
+    } else if (e.target.innerHTML == "cot") {
+      let degrees = parseFloat(string);
+      let radians = degrees * (Math.PI / 180);
+      let tanValue = Math.tan(radians);
+      if (Math.abs(tanValue) < 0.0000000001) { 
+        input.value = "Error";
+        string = "";
+    } else {
+      string = (1 / tanValue).toFixed(10);
+      string = parseFloat(string).toString();
+      input.value = string;
+    }
     } else if (e.target.innerHTML == "CE") {
       let lastOperatorIndex = Math.max(
         string.lastIndexOf("+"),
