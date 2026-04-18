@@ -133,6 +133,25 @@ arr.forEach((button) => {
         string = Math.log10(parseFloat(string)).toString();
         input.value = string;
       }
+    } else if (e.target.innerHTML == "rand") {
+      string = Math.random().toString();
+      input.value = string;
+    } else if (e.target.innerHTML == "deg") {
+      if (string !== "") {
+        string = (parseFloat(string) * (180 / Math.PI)).toString();
+        input.value = string;
+      }
+    } else if (e.target.innerHTML == "dms") {
+      if (string !== "") {
+        let deg = parseFloat(string);
+        let d = Math.floor(deg);
+        let minFloat = (deg - d) * 60;
+        let m = Math.floor(minFloat);
+        let s = Math.round((minFloat - m) * 60);
+
+        string = `${d}°${m}'${s}"`;
+        input.value = string;
+      }
     } else {
       string += e.target.innerHTML;
       input.value = string;
