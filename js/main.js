@@ -7,11 +7,13 @@ function factorial(n) {
   }
   return result;
 }
+
 let input = document.getElementById("inputBox");
 let buttons = document.querySelectorAll("button");
 let isSecondFunc = false;
 let string = "";
 let arr = Array.from(buttons);
+
 arr.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (e.target.innerHTML == "=") {
@@ -22,7 +24,7 @@ arr.forEach((button) => {
       if (isSecondFunc) {
         e.target.style.backgroundColor = "#f39c12";
       } else {
-        e.target.style.backgroundColor = ""; // العودة للون الأصلي
+        e.target.style.backgroundColor = "";
       }
     } else if (e.target.innerHTML == "C") {
       string = "";
