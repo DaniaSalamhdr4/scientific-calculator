@@ -37,6 +37,13 @@ arr.forEach((button) => {
     } else if (e.target.innerHTML == "mod") {
       string += "%";
       input.value = string;
+    } else if (e.target.innerHTML == "exp") {
+      if (string === "") {
+        string = Math.E.toString();
+      } else {
+        string = Math.exp(parseFloat(string)).toString();
+      }
+      input.value = string;
     } else {
       string += e.target.innerHTML;
       input.value = string;
