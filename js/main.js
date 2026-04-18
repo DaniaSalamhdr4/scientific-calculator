@@ -23,8 +23,6 @@ arr.forEach((button) => {
     } else if (e.target.innerHTML == "DEL") {
       string = string.substring(0, string.length - 1);
       input.value = string;
-<<<<<<< HEAD
-=======
     } else if (e.target.innerHTML == "sin") {
       let degrees = parseFloat(string);
       let radians = degrees * (Math.PI / 180);
@@ -51,14 +49,14 @@ arr.forEach((button) => {
       let degrees = parseFloat(string);
       let radians = degrees * (Math.PI / 180);
       let tanValue = Math.tan(radians);
-      if (Math.abs(tanValue) < 0.0000000001) { 
+      if (Math.abs(tanValue) < 0.0000000001) {
         input.value = "Error";
         string = "";
-    } else {
-      string = (1 / tanValue).toFixed(10);
-      string = parseFloat(string).toString();
-      input.value = string;
-    }
+      } else {
+        string = (1 / tanValue).toFixed(10);
+        string = parseFloat(string).toString();
+        input.value = string;
+      }
     } else if (e.target.innerHTML == "CE") {
       let lastOperatorIndex = Math.max(
         string.lastIndexOf("+"),
@@ -73,7 +71,6 @@ arr.forEach((button) => {
         string = "";
       }
       input.value = string;
->>>>>>> 8c691f8797c512ade2de57293f122a8e1c084b4a
     } else if (e.target.innerHTML == "√") {
       string = Math.sqrt(parseFloat(string)).toString();
       input.value = string;
@@ -119,6 +116,22 @@ arr.forEach((button) => {
           input.value = "Integer Only";
           string = "";
         }
+      }
+    } else if (e.target.innerHTML == "xʸ") {
+      string += "**";
+      input.value = string;
+    } else if (e.target.innerHTML == "10ˣ") {
+      string += "10**";
+      input.value = string;
+    } else if (e.target.innerHTML == "ln") {
+      if (string !== "") {
+        string = Math.log(parseFloat(string)).toString();
+        input.value = string;
+      }
+    } else if (e.target.innerHTML == "log") {
+      if (string !== "") {
+        string = Math.log10(parseFloat(string)).toString();
+        input.value = string;
       }
     } else {
       string += e.target.innerHTML;
