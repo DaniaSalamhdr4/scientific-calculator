@@ -44,6 +44,11 @@ arr.forEach((button) => {
         string = Math.exp(parseFloat(string)).toString();
       }
       input.value = string;
+    } else if (e.target.innerHTML == "|x|") {
+      if (string !== "") {
+        string = Math.abs(parseFloat(string)).toString();
+        input.value = string;
+      }
     } else {
       string += e.target.innerHTML;
       input.value = string;
