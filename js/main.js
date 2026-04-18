@@ -34,6 +34,9 @@ arr.forEach((button) => {
     } else if (e.target.innerHTML == "e") {
       string += Math.E.toString();
       input.value = string;
+    } else if (e.target.innerHTML == "mod") {
+      string += "%";
+      input.value = string;
     } else {
       string += e.target.innerHTML;
       input.value = string;
