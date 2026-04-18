@@ -9,7 +9,7 @@ function factorial(n) {
 }
 let input = document.getElementById("inputBox");
 let buttons = document.querySelectorAll("button");
-
+let isSecondFunc = false;
 let string = "";
 let arr = Array.from(buttons);
 arr.forEach((button) => {
@@ -17,6 +17,13 @@ arr.forEach((button) => {
     if (e.target.innerHTML == "=") {
       string = eval(string);
       input.value = string;
+    } else if (e.target.innerHTML == "2ⁿᵈ") {
+      isSecondFunc = !isSecondFunc;
+      if (isSecondFunc) {
+        e.target.style.backgroundColor = "#f39c12";
+      } else {
+        e.target.style.backgroundColor = ""; // العودة للون الأصلي
+      }
     } else if (e.target.innerHTML == "C") {
       string = "";
       input.value = string;
@@ -74,8 +81,17 @@ arr.forEach((button) => {
     } else if (e.target.innerHTML == "√") {
       string = Math.sqrt(parseFloat(string)).toString();
       input.value = string;
-    } else if (e.target.innerHTML == "x²") {
-      string = (parseFloat(string) ** 2).toString();
+    }
+    // else if (e.target.innerHTML == "x²") {
+    //   string = (parseFloat(string) ** 2).toString();
+    //   input.value = string;
+    // }
+    else if (e.target.innerHTML == "x²") {
+      if (isSecondFunc) {
+        string = Math.pow(parseFloat(string), 3).toString();
+      } else {
+        string = Math.pow(parseFloat(string), 2).toString();
+      }
       input.value = string;
     } else if (e.target.innerHTML == "1/x") {
       if (string === "" || string === "0") {
