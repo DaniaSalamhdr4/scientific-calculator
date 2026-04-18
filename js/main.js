@@ -176,3 +176,39 @@ arr.forEach((button) => {
     }
   });
 });
+document.addEventListener("keydown", (e) => {
+  // منع السلوك الافتراضي لبعض المفاتيح (مثل الباحث أو التمرير)
+  if (e.key === "Enter") e.preventDefault();
+
+  // 1. الأرقام والعمليات الأساسية
+  if (
+    (e.key >= "0" && e.key <= "9") ||
+    ["+", "-", "*", "/", ".", "(", ")", "%"].includes(e.key)
+  ) {
+    string += e.key;
+    input.value = string;
+  }
+
+  // 2. مفتاح Enter للحساب (=)
+  else if (e.key === "Enter") {
+    try {
+      string = eval(string).toString();
+      input.value = string;
+    } catch {
+      input.value = "Error";
+      string = "";
+    }
+  }
+
+  // 3. مفتاح Backspace للحذف (DEL)
+  else if (e.key === "Backspace") {
+    string = string.toString().slice(0, -1);
+    input.value = string;
+  }
+
+  // 4. مفتاح Escape للمسح الشامل (C)
+  else if (e.key === "Escape") {
+    string = "";
+    input.value = string;
+  }
+});
